@@ -1,0 +1,15 @@
+modLoader="javafml"
+loaderVersion="[31,)"
+issueTrackerURL="https://issues.atymic.defazomb.dev/"
+
+[[mods]]
+modId="atymic"
+version="${file.jarVersion}"
+displayName="Atymic"
+updateJSONURL="https://updates.atymic.defazomb.dev/"
+displayURL="http://atymic.defazomb.dev/"
+logoFile="logo.png"
+authors="defazomb"
+description='''
+Harness the power of the Sun for pleasure and profit!
+'''
