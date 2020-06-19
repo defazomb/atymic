@@ -3,6 +3,8 @@ package dev.defazomb.atymic.common.tileentity
 import dev.defazomb.atymic.Atymic
 import dev.defazomb.atymic.api.SunlightProvider
 import dev.defazomb.atymic.common.capability.sunlight.DefaultSunlightProvider
+import net.minecraft.network.NetworkManager
+import net.minecraft.network.play.server.SUpdateTileEntityPacket
 import net.minecraft.tileentity.ITickableTileEntity
 import net.minecraft.tileentity.TileEntity
 import net.minecraft.util.ResourceLocation
@@ -12,7 +14,7 @@ import net.minecraftforge.common.util.LazyOptional
 
 class SunForgeTileEntity : TileEntity(TileEntityHandler.SUN_FORGE.get()), ITickableTileEntity {
 
-    private val sunlight = DefaultSunlightProvider(capacity = 100)
+    val sunlight = DefaultSunlightProvider(capacity = 100)
 
     override fun tick() {
         sunlight.value += 1

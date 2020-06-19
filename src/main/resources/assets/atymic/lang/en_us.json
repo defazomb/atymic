@@ -1,5 +1,6 @@
 {
   "block.atymic.sun_forge": "Sun Forge",
+  "block.atymic.sun_forge.activated": "Sunlight: %s/%s",
   "itemGroup.atymic": "Atymic",
   "item.atymic.sun_stone": "Sun Stone"
 }

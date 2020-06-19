@@ -28,7 +28,6 @@ class Atymic {
     companion object {
 
         const val MOD_ID = "atymic"
-        const val MOD_NAME = "Atymic"
 
         @JvmStatic
         @SubscribeEvent
