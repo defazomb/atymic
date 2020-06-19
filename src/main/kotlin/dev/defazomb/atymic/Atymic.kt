@@ -6,6 +6,8 @@ import dev.defazomb.atymic.common.item.group.ItemGroupHandler
 import dev.defazomb.atymic.common.tileentity.TileEntityHandler
 import net.minecraft.item.BlockItem
 import net.minecraft.item.Item
+import net.minecraft.tileentity.TileEntity
+import net.minecraftforge.event.AttachCapabilitiesEvent
 import net.minecraftforge.event.RegistryEvent
 import net.minecraftforge.eventbus.api.SubscribeEvent
 import net.minecraftforge.fml.common.Mod
