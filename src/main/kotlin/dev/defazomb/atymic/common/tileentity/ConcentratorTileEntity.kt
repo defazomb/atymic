@@ -4,12 +4,15 @@ import dev.defazomb.atymic.Atymic
 import dev.defazomb.atymic.api.SunlightProvider
 import dev.defazomb.atymic.common.capability.sunlight.DefaultSunlightProvider
 import net.minecraft.nbt.CompoundNBT
+import net.minecraft.network.NetworkManager
+import net.minecraft.network.play.server.SUpdateTileEntityPacket
 import net.minecraft.tileentity.TileEntity
 import net.minecraft.util.Direction
 import net.minecraft.util.ResourceLocation
 import net.minecraftforge.common.capabilities.Capability
 import net.minecraftforge.common.capabilities.CapabilityInject
 import net.minecraftforge.common.util.LazyOptional
+
 
 class ConcentratorTileEntity : TileEntity(TileEntityHandler.CONCENTRATOR.get()) {
 
@@ -29,12 +32,20 @@ class ConcentratorTileEntity : TileEntity(TileEntityHandler.CONCENTRATOR.get()) 
 
     @Suppress("UNCHECKED_CAST")
     override fun <T> getCapability(capability: Capability<T>, side: Direction?): LazyOptional<T> {
-        if (capability == SunForgeTileEntity.SUNLIGHT_PROVIDER) {
+        if (capability == SUNLIGHT_PROVIDER) {
             // This cast is safe since we are checking the capability.
             return LazyOptional.of { sunlight as T }
         }
 
         return super.getCapability(capability, side)
+    }
+
+    override fun getUpdatePacket(): SUpdateTileEntityPacket? {
+        return SUpdateTileEntityPacket(getPos(), -1, write(CompoundNBT()))
+    }
+
+    override fun onDataPacket(net: NetworkManager?, pkt: SUpdateTileEntityPacket) {
+        read(pkt.nbtCompound)
     }
 
     companion object {

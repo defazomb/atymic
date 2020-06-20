@@ -11,16 +11,22 @@ import net.minecraftforge.common.capabilities.CapabilityInject
 
 class ExtractionLensTileEntity : TileEntity(TileEntityHandler.EXTRACTION_LENS.get()), ITickableTileEntity {
 
+    var destination: ImportingLensTileEntity? = null
+
     override fun tick() {
-        val direction = blockState[ExtractionLensBlock.facing]
-        val facing = world?.getTileEntity(pos.offset(direction))
-        val capability = facing?.getCapability(SUNLIGHT_PROVIDER, direction.opposite)
-        val sunlight = capability?.orElse(null)
-        if (sunlight == null) {
+        val dest = destination ?: return
+        if (!dest.hasCapacity()) {
             return
         }
 
-        sunlight.extract(2)
+        val direction = blockState[ExtractionLensBlock.facing]
+        val facing = world?.getTileEntity(pos.offset(direction))
+        val capability = facing?.getCapability(SUNLIGHT_PROVIDER, direction.opposite)
+        val sunlight = capability?.orElse(null) ?: return
+
+        val attemptingAmount = sunlight.value.coerceAtMost(2)
+        val importedAmount = dest.import(attemptingAmount)
+        sunlight.extract(importedAmount)
     }
 
     companion object {

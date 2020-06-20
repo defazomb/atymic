@@ -1,5 +1,6 @@
 {
   "block.atymic.concentrator": "Concentrator",
+  "block.atymic.concentrator.activated": "Sunlight: %s/%s",
   "block.atymic.extraction_lens": "Extraction Lens",
   "block.atymic.importing_lens": "Importing Lens",
   "block.atymic.sun_forge": "Sun Forge",
