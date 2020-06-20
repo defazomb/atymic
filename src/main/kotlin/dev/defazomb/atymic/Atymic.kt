@@ -1,6 +1,7 @@
 package dev.defazomb.atymic
 
 import dev.defazomb.atymic.common.block.BlockHandler
+import dev.defazomb.atymic.common.capability.CapabilityHandler
 import dev.defazomb.atymic.common.item.ItemHandler
 import dev.defazomb.atymic.common.item.group.ItemGroupHandler
 import dev.defazomb.atymic.common.tileentity.TileEntityHandler
@@ -11,6 +12,7 @@ import net.minecraftforge.event.AttachCapabilitiesEvent
 import net.minecraftforge.event.RegistryEvent
 import net.minecraftforge.eventbus.api.SubscribeEvent
 import net.minecraftforge.fml.common.Mod
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext
 
 @Mod(Atymic.MOD_ID)
@@ -28,6 +30,12 @@ class Atymic {
     companion object {
 
         const val MOD_ID = "atymic"
+
+        @JvmStatic
+        @SubscribeEvent
+        fun onCommonSetup(event: FMLCommonSetupEvent) {
+            CapabilityHandler()
+        }
 
         @JvmStatic
         @SubscribeEvent

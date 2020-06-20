@@ -4,7 +4,6 @@ import dev.defazomb.atymic.Atymic
 import dev.defazomb.atymic.api.SunlightProvider
 import dev.defazomb.atymic.common.capability.sunlight.DefaultSunlightProvider
 import net.minecraft.nbt.CompoundNBT
-import net.minecraft.tileentity.ITickableTileEntity
 import net.minecraft.tileentity.TileEntity
 import net.minecraft.util.Direction
 import net.minecraft.util.ResourceLocation
@@ -12,16 +11,9 @@ import net.minecraftforge.common.capabilities.Capability
 import net.minecraftforge.common.capabilities.CapabilityInject
 import net.minecraftforge.common.util.LazyOptional
 
-class SunForgeTileEntity : TileEntity(TileEntityHandler.SUN_FORGE.get()), ITickableTileEntity {
+class ConcentratorTileEntity : TileEntity(TileEntityHandler.CONCENTRATOR.get()) {
 
-    val sunlight = DefaultSunlightProvider(capacity = 100)
-
-    override fun tick() {
-        sunlight.value += 1
-
-        // Since we've updated the value, mark the chunk as dirty.
-        markDirty()
-    }
+    val sunlight = DefaultSunlightProvider(capacity = 10000)
 
     override fun write(tag: CompoundNBT): CompoundNBT {
         tag.put("sunlight", sunlight.serializeNBT())
@@ -37,7 +29,7 @@ class SunForgeTileEntity : TileEntity(TileEntityHandler.SUN_FORGE.get()), ITicka
 
     @Suppress("UNCHECKED_CAST")
     override fun <T> getCapability(capability: Capability<T>, side: Direction?): LazyOptional<T> {
-        if (capability == SUNLIGHT_PROVIDER) {
+        if (capability == SunForgeTileEntity.SUNLIGHT_PROVIDER) {
             // This cast is safe since we are checking the capability.
             return LazyOptional.of { sunlight as T }
         }
@@ -47,7 +39,7 @@ class SunForgeTileEntity : TileEntity(TileEntityHandler.SUN_FORGE.get()), ITicka
 
     companion object {
 
-        const val ID = "sun_forge"
+        const val ID = "concentrator"
 
         val RESOURCE_LOCATION = ResourceLocation(Atymic.MOD_ID, ID)
 

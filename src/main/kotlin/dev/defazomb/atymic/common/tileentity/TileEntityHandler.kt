@@ -14,6 +14,10 @@ class TileEntityHandler {
 
         val TILE_ENTITIES: DeferredRegister<TileEntityType<*>> = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, Atymic.MOD_ID)
 
+        val CONCENTRATOR: RegistryObject<TileEntityType<ConcentratorTileEntity>> = TILE_ENTITIES.register(ConcentratorTileEntity.ID) {
+            TileEntityType.Builder.create(Supplier { ConcentratorTileEntity() }, BlockHandler.CONCENTRATOR.get()).build(null)
+        }
+
         val EXTRACTION_LENS: RegistryObject<TileEntityType<ExtractionLensTileEntity>> = TILE_ENTITIES.register(ExtractionLensTileEntity.ID) {
             TileEntityType.Builder.create(Supplier { ExtractionLensTileEntity() }, BlockHandler.EXTRACTION_LENS.get()).build(null)
         }

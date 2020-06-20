@@ -27,6 +27,12 @@ class DefaultSunlightProvider(override var capacity: Long = 0) : SunlightProvide
         return amountExtracted
     }
 
+    override fun import(amount: Long): Long {
+        val amountImported = amount.coerceAtMost(capacity - value)
+        value += amountImported
+        return amountImported
+    }
+
     override fun deserializeNBT(nbt: CompoundNBT) {
         return NBT.read(nbt) {
             compound {

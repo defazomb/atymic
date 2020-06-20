@@ -30,4 +30,5 @@ interface SunlightProvider : INBTSerializable<CompoundNBT> {
     val isEmpty: Boolean
 
     fun extract(amount: Long): Long
+    fun import(amount: Long): Long
 }
