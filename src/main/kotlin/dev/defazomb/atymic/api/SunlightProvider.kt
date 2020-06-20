@@ -28,4 +28,6 @@ interface SunlightProvider : INBTSerializable<CompoundNBT> {
      * Whether this [SunlightProvider] has no sunlight.
      */
     val isEmpty: Boolean
+
+    fun extract(amount: Long): Long
 }

@@ -1,4 +1,6 @@
 {
+  "block.atymic.extraction_lens": "Extraction Lens",
+  "block.atymic.importing_lens": "Importing Lens",
   "block.atymic.sun_forge": "Sun Forge",
   "block.atymic.sun_forge.activated": "Sunlight: %s/%s",
   "itemGroup.atymic": "Atymic",

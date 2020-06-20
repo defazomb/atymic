@@ -12,6 +12,14 @@ class BlockHandler {
 
         val BLOCKS: DeferredRegister<Block> = DeferredRegister.create(ForgeRegistries.BLOCKS, Atymic.MOD_ID)
 
+        val EXTRACTION_LENS: RegistryObject<Block> = BLOCKS.register("extraction_lens") {
+            ExtractionLensBlock()
+        }
+
+        val IMPORTING_LENS: RegistryObject<Block> = BLOCKS.register("importing_lens") {
+            ImportingLensBlock()
+        }
+
         val SUN_FORGE: RegistryObject<Block> = BLOCKS.register("sun_forge") {
             SunForgeBlock()
         }

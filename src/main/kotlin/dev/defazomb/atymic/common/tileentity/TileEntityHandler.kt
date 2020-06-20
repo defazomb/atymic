@@ -14,7 +14,15 @@ class TileEntityHandler {
 
         val TILE_ENTITIES: DeferredRegister<TileEntityType<*>> = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, Atymic.MOD_ID)
 
-        val SUN_FORGE: RegistryObject<TileEntityType<SunForgeTileEntity>> = TILE_ENTITIES.register("sun_forge") {
+        val EXTRACTION_LENS: RegistryObject<TileEntityType<ExtractionLensTileEntity>> = TILE_ENTITIES.register(ExtractionLensTileEntity.ID) {
+            TileEntityType.Builder.create(Supplier { ExtractionLensTileEntity() }, BlockHandler.EXTRACTION_LENS.get()).build(null)
+        }
+
+        val IMPORTING_LENS: RegistryObject<TileEntityType<ImportingLensTileEntity>> = TILE_ENTITIES.register(ImportingLensTileEntity.ID) {
+            TileEntityType.Builder.create(Supplier { ImportingLensTileEntity() }, BlockHandler.IMPORTING_LENS.get()).build(null)
+        }
+
+        val SUN_FORGE: RegistryObject<TileEntityType<SunForgeTileEntity>> = TILE_ENTITIES.register(SunForgeTileEntity.ID) {
             TileEntityType.Builder.create(Supplier { SunForgeTileEntity() }, BlockHandler.SUN_FORGE.get()).build(null)
         }
     }

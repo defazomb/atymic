@@ -15,7 +15,7 @@ import net.minecraft.util.text.TranslationTextComponent
 import net.minecraft.world.IBlockReader
 import net.minecraft.world.World
 
-class SunForgeBlock : Block(createProperties()) {
+class SunForgeBlock : Block(Properties.create(Material.ROCK)) {
 
     override fun hasTileEntity(state: BlockState): Boolean {
         return true
@@ -37,12 +37,5 @@ class SunForgeBlock : Block(createProperties()) {
 
         player.sendMessage(TranslationTextComponent("$translationKey.activated", tileEntity.sunlight.value, tileEntity.sunlight.capacity))
         return ActionResultType.SUCCESS
-    }
-
-    companion object {
-
-        fun createProperties(): Properties {
-            return Properties.create(Material.ROCK)
-        }
     }
 }

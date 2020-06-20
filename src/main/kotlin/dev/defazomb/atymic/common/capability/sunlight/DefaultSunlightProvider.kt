@@ -21,6 +21,12 @@ class DefaultSunlightProvider(override var capacity: Long = 0) : SunlightProvide
     override val isEmpty: Boolean
         get() = this.value <= 0
 
+    override fun extract(amount: Long): Long {
+        val amountExtracted = amount.coerceAtMost(value)
+        value -= amountExtracted
+        return amountExtracted
+    }
+
     override fun deserializeNBT(nbt: CompoundNBT) {
         return NBT.read(nbt) {
             compound {
