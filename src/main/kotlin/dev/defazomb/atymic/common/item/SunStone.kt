@@ -12,14 +12,11 @@ class SunStone : Item(PROPERTIES) {
     private var targetExtractingLens: ExtractionLensTileEntity? = null
 
     override fun onItemUse(context: ItemUseContext): ActionResultType {
-        val tileEntity = context.world.getTileEntity(context.pos)
-        if (tileEntity is ImportingLensTileEntity) {
-            return handleImportLens(context, tileEntity)
+        return when(val tileEntity = context.world.getTileEntity(context.pos)) {
+            is ImportingLensTileEntity -> handleImportLens(context, tileEntity)
+            is ExtractionLensTileEntity -> handleExtractLens(context, tileEntity)
+            else -> ActionResultType.PASS
         }
-        if (tileEntity is ExtractionLensTileEntity) {
-            return handleExtractLens(context, tileEntity)
-        }
-        return ActionResultType.PASS
     }
 
     private fun handleImportLens(context: ItemUseContext, tileEntity: ImportingLensTileEntity): ActionResultType {

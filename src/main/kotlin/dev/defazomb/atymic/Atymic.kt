@@ -19,9 +19,9 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 class Atymic {
 
-    init {
-        val modEventBus = FMLJavaModLoadingContext.get().modEventBus
+    private val modEventBus = FMLJavaModLoadingContext.get().modEventBus
 
+    init {
         BlockHandler.BLOCKS.register(modEventBus)
         ItemHandler.ITEMS.register(modEventBus)
         TileEntityHandler.TILE_ENTITIES.register(modEventBus)

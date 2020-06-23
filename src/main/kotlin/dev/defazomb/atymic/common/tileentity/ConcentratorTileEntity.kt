@@ -30,11 +30,9 @@ class ConcentratorTileEntity : TileEntity(TileEntityHandler.CONCENTRATOR.get()) 
         super.read(tag)
     }
 
-    @Suppress("UNCHECKED_CAST")
     override fun <T> getCapability(capability: Capability<T>, side: Direction?): LazyOptional<T> {
         if (capability == SUNLIGHT_PROVIDER) {
-            // This cast is safe since we are checking the capability.
-            return LazyOptional.of { sunlight as T }
+            return LazyOptional.of { sunlight }.cast()
         }
 
         return super.getCapability(capability, side)

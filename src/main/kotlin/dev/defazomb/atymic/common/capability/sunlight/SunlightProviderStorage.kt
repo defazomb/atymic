@@ -1,7 +1,6 @@
 package dev.defazomb.atymic.common.capability.sunlight
 
 import dev.defazomb.atymic.api.SunlightProvider
-import dev.defazomb.kore.nbt.NBT
 import net.minecraft.nbt.CompoundNBT
 import net.minecraft.nbt.INBT
 import net.minecraft.util.Direction
